@@ -2789,7 +2789,7 @@ void Lcd_Shift_Left(void);
 # 43 "main_master_p1.c" 2
 # 61 "main_master_p1.c"
 char val, frow[20], srow[20];
-int mov = 0;
+int mov = 0, temp = 24;
 
 
 
@@ -2814,8 +2814,8 @@ void main(void) {
     Lcd_Clear();
     while(1){
         read_red();
-        sprintf(frow, "%d%d:%d%d    Luz: %d", 2,3,4,2,95);
-        sprintf(srow, "Mov: %d  Temp: %d",mov,20);
+        sprintf(frow, "%d%d:%d%d    Luz: %2d", 2,3,4,2,95);
+        sprintf(srow, "Mov: %d  Temp: %2d",mov,temp);
         Lcd_Set_Cursor(1,1);
         Lcd_Write_String(frow);
         Lcd_Set_Cursor(2,1);
@@ -2828,12 +2828,11 @@ void main(void) {
 
 
 void read_red(void){
-    switch ((val>>1)){
-        case 'M':
-            mov = val & 0x01;
-            break;
-        default:
-            break;
+    if ((val>>1)== 'M'){
+        mov = val & 0x01;
+    }
+    else if((val & 0x80) == 128){
+        temp = val & 0x7F;
     }
     return;
 }

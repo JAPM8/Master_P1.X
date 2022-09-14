@@ -333,10 +333,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _frow `uc ~T0 @X0 -> 20 `i e ]
 [v _srow `uc ~T0 @X0 -> 20 `i e ]
 "62
-[; ;main_master_p1.c: 62: int mov = 0;
+[; ;main_master_p1.c: 62: int mov = 0, temp = 24;
 [v _mov `i ~T0 @X0 1 e ]
 [i _mov
 -> 0 `i
+]
+[v _temp `i ~T0 @X0 1 e ]
+[i _temp
+-> 24 `i
 ]
 [v $root$_master `(v ~T0 @X0 0 e ]
 "71
@@ -384,11 +388,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main_master_p1.c: 86:         read_red();
 [e ( _read_red ..  ]
 "87
-[; ;main_master_p1.c: 87:         sprintf(frow, "%d%d:%d%d    Luz: %d", 2,3,4,2,95);
+[; ;main_master_p1.c: 87:         sprintf(frow, "%d%d:%d%d    Luz: %2d", 2,3,4,2,95);
 [e ( _sprintf (1 , , , , , (. , &U _frow :s 1C -> 2 `i -> 3 `i -> 4 `i -> 2 `i -> 95 `i ]
 "88
-[; ;main_master_p1.c: 88:         sprintf(srow, "Mov: %d  Temp: %d",mov,20);
-[e ( _sprintf (1 , , (. , &U _srow :s 2C _mov -> 20 `i ]
+[; ;main_master_p1.c: 88:         sprintf(srow, "Mov: %d  Temp: %2d",mov,temp);
+[e ( _sprintf (1 , , (. , &U _srow :s 2C _mov _temp ]
 "89
 [; ;main_master_p1.c: 89:         Lcd_Set_Cursor(1,1);
 [e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
@@ -421,79 +425,76 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _read_red ]
 [f ]
 "101
-[; ;main_master_p1.c: 101:     switch ((val>>1)){
-[e $U 147  ]
+[; ;main_master_p1.c: 101:     if ((val>>1)== 'M'){
+[e $ ! == -> >> -> _val `i -> 1 `i `ui -> 77 `ui 146  ]
 {
 "102
-[; ;main_master_p1.c: 102:         case 'M':
-[e :U 148 ]
-"103
-[; ;main_master_p1.c: 103:             mov = val & 0x01;
+[; ;main_master_p1.c: 102:         mov = val & 0x01;
 [e = _mov & -> _val `i -> 1 `i ]
-"104
-[; ;main_master_p1.c: 104:             break;
-[e $U 146  ]
-"105
-[; ;main_master_p1.c: 105:         default:
-[e :U 149 ]
-"106
-[; ;main_master_p1.c: 106:             break;
-[e $U 146  ]
-"107
-[; ;main_master_p1.c: 107:     }
+"103
+[; ;main_master_p1.c: 103:     }
 }
-[e $U 146  ]
-[e :U 147 ]
-[e [\ >> -> _val `i -> 1 `i , $ -> -> 77 `ui `i 148
- 149 ]
+[e $U 147  ]
+"104
+[; ;main_master_p1.c: 104:     else if((val & 0x80) == 128){
 [e :U 146 ]
-"108
-[; ;main_master_p1.c: 108:     return;
+[e $ ! == & -> _val `i -> 128 `i -> 128 `i 148  ]
+{
+"105
+[; ;main_master_p1.c: 105:         temp = val & 0x7F;
+[e = _temp & -> _val `i -> 127 `i ]
+"106
+[; ;main_master_p1.c: 106:     }
+}
+[e :U 148 ]
+[e :U 147 ]
+"107
+[; ;main_master_p1.c: 107:     return;
 [e $UE 145  ]
-"109
-[; ;main_master_p1.c: 109: }
+"108
+[; ;main_master_p1.c: 108: }
 [e :UE 145 ]
 }
-"114
-[; ;main_master_p1.c: 114: void setup(void){
+"113
+[; ;main_master_p1.c: 113: void setup(void){
 [v _setup `(v ~T0 @X0 1 ef ]
 {
 [e :U _setup ]
 [f ]
-"115
-[; ;main_master_p1.c: 115:     int_osc_MHz(1);
+"114
+[; ;main_master_p1.c: 114:     int_osc_MHz(1);
 [e ( _int_osc_MHz (1 -> -> 1 `i `uc ]
-"118
-[; ;main_master_p1.c: 118:     ANSEL = 0;
+"117
+[; ;main_master_p1.c: 117:     ANSEL = 0;
 [e = _ANSEL -> -> 0 `i `uc ]
-"119
-[; ;main_master_p1.c: 119:     ANSELH = 0;
+"118
+[; ;main_master_p1.c: 118:     ANSELH = 0;
 [e = _ANSELH -> -> 0 `i `uc ]
-"121
-[; ;main_master_p1.c: 121:     TRISA = 0;
+"120
+[; ;main_master_p1.c: 120:     TRISA = 0;
 [e = _TRISA -> -> 0 `i `uc ]
-"122
-[; ;main_master_p1.c: 122:     TRISB = 0;
+"121
+[; ;main_master_p1.c: 121:     TRISB = 0;
 [e = _TRISB -> -> 0 `i `uc ]
-"124
-[; ;main_master_p1.c: 124:     Lcd_Init();
+"123
+[; ;main_master_p1.c: 123:     Lcd_Init();
 [e ( _Lcd_Init ..  ]
-"125
-[; ;main_master_p1.c: 125:     USART_set(9600);
+"124
+[; ;main_master_p1.c: 124:     USART_set(9600);
 [e ( _USART_set (1 -> -> -> 9600 `i `l `ul ]
-"128
-[; ;main_master_p1.c: 128:     INTCONbits.GIE = 1;
+"127
+[; ;main_master_p1.c: 127:     INTCONbits.GIE = 1;
 [e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
-"129
-[; ;main_master_p1.c: 129:     INTCONbits.PEIE = 1;
+"128
+[; ;main_master_p1.c: 128:     INTCONbits.PEIE = 1;
 [e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
+"129
+[; ;main_master_p1.c: 129:     return;
+[e $UE 149  ]
 "130
-[; ;main_master_p1.c: 130:     return;
-[e $UE 150  ]
-"131
-[; ;main_master_p1.c: 131: }
-[e :UE 150 ]
+[; ;main_master_p1.c: 130: }
+[e :UE 149 ]
 }
-[p f _sprintf 8388736 ]
-[a 1C 37 100 37 100 58 37 100 37 100 32 32 32 32 76 117 122 58 32 37 100 0 ]
-[a 2C 77 111 118 58 32 37 100 32 32 84 101 109 112 58 32 37 100 0 ]
+[p f _sprintf 8421504 ]
+[a 1C 37 100 37 100 58 37 100 37 100 32 32 32 32 76 117 122 58 32 37 50 100 0 ]
+[a 2C 77 111 118 58 32 37 100 32 32 84 101 109 112 58 32 37 50 100 0 ]
