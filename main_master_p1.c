@@ -37,6 +37,7 @@
 #include <xc.h>
 #include <pic16f887.h>
 #include <stdint.h>
+#include <stdio.h> 
 #include "osc.h"
 #include "USART.h"
 #include "LCD.h"
@@ -57,7 +58,7 @@
 /*
  * Variables
  */
-char val;
+char val, frow[20], srow[20];
 /*
  * Prototipos de Función
  */
@@ -80,8 +81,14 @@ void __interrupt() master(void){
 void main(void) {
     setup();
     Lcd_Clear();
-    Lcd_Set_Cursor(1,1);
-    Lcd_Write_Char(val);
+    while(1){
+        sprintf(frow, "%d%d:%d%d \t\t Luz: %d", 2,3,4,2,95);
+        sprintf(srow, "Mov: %d \tTemp: %d",1,20);
+        Lcd_Set_Cursor(1,1);
+        Lcd_Write_String(frow);
+        Lcd_Set_Cursor(2,1);
+        Lcd_Write_String(srow);
+    }
     return;
 }
 
