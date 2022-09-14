@@ -2764,8 +2764,6 @@ void int_osc_MHz(uint8_t freq);
 # 1 "./USART.h" 1
 # 12 "./USART.h"
 void USART_set(const unsigned long int baudrate);
-void USART_send(const char data);
-void USART_print(const char *string);
 char USART_read(void);
 # 42 "main_master_p1.c" 2
 
@@ -2791,11 +2789,12 @@ void Lcd_Shift_Left(void);
 # 43 "main_master_p1.c" 2
 # 61 "main_master_p1.c"
 char val, frow[20], srow[20];
+int mov = 0;
 
 
 
 void setup(void);
-
+void read_red(void);
 
 
 
@@ -2814,12 +2813,27 @@ void main(void) {
     setup();
     Lcd_Clear();
     while(1){
-        sprintf(frow, "%d%d:%d%d \t\t Luz: %d", 2,3,4,2,95);
-        sprintf(srow, "Mov: %d \tTemp: %d",1,20);
+        read_red();
+        sprintf(frow, "%d%d:%d%d    Luz: %d", 2,3,4,2,95);
+        sprintf(srow, "Mov: %d  Temp: %d",mov,20);
         Lcd_Set_Cursor(1,1);
         Lcd_Write_String(frow);
         Lcd_Set_Cursor(2,1);
         Lcd_Write_String(srow);
+    }
+    return;
+}
+
+
+
+
+void read_red(void){
+    switch ((val>>1)){
+        case 'M':
+            mov = val & 0x01;
+            break;
+        default:
+            break;
     }
     return;
 }

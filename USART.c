@@ -19,28 +19,12 @@ void USART_set(const unsigned long int baudrate)
     TXSTAbits.SYNC = 0; //Modo asíncrono
     RCSTAbits.SPEN = 1; //Comunicación Serial habilitada
     
-    //Recepción y transmisión de 8 bits
-    RCSTAbits.RX9 = 0; 
-    TXSTAbits.TX9 = 0;
-
-    TXSTAbits.TXEN = 1; // Transmisor
-    RCSTAbits.CREN = 1;//Receptor     
-    
     PIE1bits.RCIE = 1; //Se habilitan interrupciones de recepción UART
-}
+    
+    //Recepción de 8 bits
+    RCSTAbits.RX9 = 0; 
 
-void USART_send(const char data)
-{
-    while(!TXSTAbits.TRMT);   
-    TXREG = data;
-}
-
-void USART_print(const char *string)
-{     
-    for(int i = 0; string[i] != '\0'; i++)
-    {
-        USART_send(string[i]);
-    }
+    RCSTAbits.CREN = 1;//Receptor     S
 }
 
 char USART_read(void)

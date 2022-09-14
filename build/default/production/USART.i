@@ -2635,8 +2635,6 @@ extern __bank0 __bit __timeout;
 # 1 "./USART.h" 1
 # 12 "./USART.h"
 void USART_set(const unsigned long int baudrate);
-void USART_send(const char data);
-void USART_print(const char *string);
 char USART_read(void);
 # 8 "USART.c" 2
 
@@ -2653,28 +2651,12 @@ void USART_set(const unsigned long int baudrate)
     TXSTAbits.SYNC = 0;
     RCSTAbits.SPEN = 1;
 
+    PIE1bits.RCIE = 1;
+
 
     RCSTAbits.RX9 = 0;
-    TXSTAbits.TX9 = 0;
 
-    TXSTAbits.TXEN = 1;
     RCSTAbits.CREN = 1;
-
-    PIE1bits.RCIE = 1;
-}
-
-void USART_send(const char data)
-{
-    while(!TXSTAbits.TRMT);
-    TXREG = data;
-}
-
-void USART_print(const char *string)
-{
-    for(int i = 0; string[i] != '\0'; i++)
-    {
-        USART_send(string[i]);
-    }
 }
 
 char USART_read(void)

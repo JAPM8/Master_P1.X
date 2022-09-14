@@ -12,16 +12,19 @@ Version 4.0 HI-TECH Software Intermediate Code
 "554
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f887.h: 554: extern volatile PIR1bits_t PIR1bits __attribute__((address(0x00C)));
 [v _PIR1bits `VS18 ~T0 @X0 0 e@12 ]
-"15 ./USART.h
-[; ;./USART.h: 15: char USART_read(void);
+"13 ./USART.h
+[; ;./USART.h: 13: char USART_read(void);
 [v _USART_read `(uc ~T0 @X0 0 ef ]
 [p mainexit ]
-"65 main_master_p1.c
-[; ;main_master_p1.c: 65: void setup(void);
+"66 main_master_p1.c
+[; ;main_master_p1.c: 66: void setup(void);
 [v _setup `(v ~T0 @X0 0 ef ]
 "50 ./LCD.h
 [; ;./LCD.h: 50: void Lcd_Clear(void);
 [v _Lcd_Clear `(v ~T0 @X0 0 ef ]
+"67 main_master_p1.c
+[; ;main_master_p1.c: 67: void read_red(void);
+[v _read_red `(v ~T0 @X0 0 ef ]
 "194 C:\Program Files\Microchip\xc8\v2.35\pic\include\c90\stdio.h
 [v _sprintf `(i ~T0 @X0 0 e1v`*uc`*Cuc ]
 "52 ./LCD.h
@@ -329,119 +332,168 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _val `uc ~T0 @X0 1 e ]
 [v _frow `uc ~T0 @X0 -> 20 `i e ]
 [v _srow `uc ~T0 @X0 -> 20 `i e ]
+"62
+[; ;main_master_p1.c: 62: int mov = 0;
+[v _mov `i ~T0 @X0 1 e ]
+[i _mov
+-> 0 `i
+]
 [v $root$_master `(v ~T0 @X0 0 e ]
-"70
-[; ;main_master_p1.c: 70: void __attribute__((picinterrupt(("")))) master(void){
+"71
+[; ;main_master_p1.c: 71: void __attribute__((picinterrupt(("")))) master(void){
 [v _master `(v ~T1 @X0 1 ef ]
 {
 [e :U _master ]
 [f ]
-"72
-[; ;main_master_p1.c: 72:     if(PIR1bits.RCIF){
+"73
+[; ;main_master_p1.c: 73:     if(PIR1bits.RCIF){
 [e $ ! != -> . . _PIR1bits 0 5 `i -> 0 `i 140  ]
 {
-"73
-[; ;main_master_p1.c: 73:         val = USART_read();
-[e = _val ( _USART_read ..  ]
 "74
-[; ;main_master_p1.c: 74:     }
+[; ;main_master_p1.c: 74:         val = USART_read();
+[e = _val ( _USART_read ..  ]
+"75
+[; ;main_master_p1.c: 75:     }
 }
 [e :U 140 ]
-"75
-[; ;main_master_p1.c: 75:     return;
-[e $UE 139  ]
 "76
-[; ;main_master_p1.c: 76: }
+[; ;main_master_p1.c: 76:     return;
+[e $UE 139  ]
+"77
+[; ;main_master_p1.c: 77: }
 [e :UE 139 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"81
-[; ;main_master_p1.c: 81: void main(void) {
+"82
+[; ;main_master_p1.c: 82: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"82
-[; ;main_master_p1.c: 82:     setup();
-[e ( _setup ..  ]
 "83
-[; ;main_master_p1.c: 83:     Lcd_Clear();
-[e ( _Lcd_Clear ..  ]
+[; ;main_master_p1.c: 83:     setup();
+[e ( _setup ..  ]
 "84
-[; ;main_master_p1.c: 84:     while(1){
+[; ;main_master_p1.c: 84:     Lcd_Clear();
+[e ( _Lcd_Clear ..  ]
+"85
+[; ;main_master_p1.c: 85:     while(1){
 [e :U 143 ]
 {
-"85
-[; ;main_master_p1.c: 85:         sprintf(frow, "%d%d:%d%d \t\t Luz: %d", 2,3,4,2,95);
-[e ( _sprintf (1 , , , , , (. , &U _frow :s 1C -> 2 `i -> 3 `i -> 4 `i -> 2 `i -> 95 `i ]
 "86
-[; ;main_master_p1.c: 86:         sprintf(srow, "Mov: %d \tTemp: %d",1,20);
-[e ( _sprintf (1 , , (. , &U _srow :s 2C -> 1 `i -> 20 `i ]
+[; ;main_master_p1.c: 86:         read_red();
+[e ( _read_red ..  ]
 "87
-[; ;main_master_p1.c: 87:         Lcd_Set_Cursor(1,1);
-[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+[; ;main_master_p1.c: 87:         sprintf(frow, "%d%d:%d%d    Luz: %d", 2,3,4,2,95);
+[e ( _sprintf (1 , , , , , (. , &U _frow :s 1C -> 2 `i -> 3 `i -> 4 `i -> 2 `i -> 95 `i ]
 "88
-[; ;main_master_p1.c: 88:         Lcd_Write_String(frow);
-[e ( _Lcd_Write_String (1 &U _frow ]
+[; ;main_master_p1.c: 88:         sprintf(srow, "Mov: %d  Temp: %d",mov,20);
+[e ( _sprintf (1 , , (. , &U _srow :s 2C _mov -> 20 `i ]
 "89
-[; ;main_master_p1.c: 89:         Lcd_Set_Cursor(2,1);
-[e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
+[; ;main_master_p1.c: 89:         Lcd_Set_Cursor(1,1);
+[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
 "90
-[; ;main_master_p1.c: 90:         Lcd_Write_String(srow);
-[e ( _Lcd_Write_String (1 &U _srow ]
+[; ;main_master_p1.c: 90:         Lcd_Write_String(frow);
+[e ( _Lcd_Write_String (1 &U _frow ]
 "91
-[; ;main_master_p1.c: 91:     }
+[; ;main_master_p1.c: 91:         Lcd_Set_Cursor(2,1);
+[e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
+"92
+[; ;main_master_p1.c: 92:         Lcd_Write_String(srow);
+[e ( _Lcd_Write_String (1 &U _srow ]
+"93
+[; ;main_master_p1.c: 93:     }
 }
 [e :U 142 ]
 [e $U 143  ]
 [e :U 144 ]
-"92
-[; ;main_master_p1.c: 92:     return;
+"94
+[; ;main_master_p1.c: 94:     return;
 [e $UE 141  ]
-"93
-[; ;main_master_p1.c: 93: }
+"95
+[; ;main_master_p1.c: 95: }
 [e :UE 141 ]
 }
-"98
-[; ;main_master_p1.c: 98: void setup(void){
+"100
+[; ;main_master_p1.c: 100: void read_red(void){
+[v _read_red `(v ~T0 @X0 1 ef ]
+{
+[e :U _read_red ]
+[f ]
+"101
+[; ;main_master_p1.c: 101:     switch ((val>>1)){
+[e $U 147  ]
+{
+"102
+[; ;main_master_p1.c: 102:         case 'M':
+[e :U 148 ]
+"103
+[; ;main_master_p1.c: 103:             mov = val & 0x01;
+[e = _mov & -> _val `i -> 1 `i ]
+"104
+[; ;main_master_p1.c: 104:             break;
+[e $U 146  ]
+"105
+[; ;main_master_p1.c: 105:         default:
+[e :U 149 ]
+"106
+[; ;main_master_p1.c: 106:             break;
+[e $U 146  ]
+"107
+[; ;main_master_p1.c: 107:     }
+}
+[e $U 146  ]
+[e :U 147 ]
+[e [\ >> -> _val `i -> 1 `i , $ -> -> 77 `ui `i 148
+ 149 ]
+[e :U 146 ]
+"108
+[; ;main_master_p1.c: 108:     return;
+[e $UE 145  ]
+"109
+[; ;main_master_p1.c: 109: }
+[e :UE 145 ]
+}
+"114
+[; ;main_master_p1.c: 114: void setup(void){
 [v _setup `(v ~T0 @X0 1 ef ]
 {
 [e :U _setup ]
 [f ]
-"99
-[; ;main_master_p1.c: 99:     int_osc_MHz(1);
-[e ( _int_osc_MHz (1 -> -> 1 `i `uc ]
-"102
-[; ;main_master_p1.c: 102:     ANSEL = 0;
-[e = _ANSEL -> -> 0 `i `uc ]
-"103
-[; ;main_master_p1.c: 103:     ANSELH = 0;
-[e = _ANSELH -> -> 0 `i `uc ]
-"105
-[; ;main_master_p1.c: 105:     TRISA = 0;
-[e = _TRISA -> -> 0 `i `uc ]
-"106
-[; ;main_master_p1.c: 106:     TRISB = 0;
-[e = _TRISB -> -> 0 `i `uc ]
-"108
-[; ;main_master_p1.c: 108:     Lcd_Init();
-[e ( _Lcd_Init ..  ]
-"109
-[; ;main_master_p1.c: 109:     USART_set(9600);
-[e ( _USART_set (1 -> -> -> 9600 `i `l `ul ]
-"112
-[; ;main_master_p1.c: 112:     INTCONbits.GIE = 1;
-[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
-"113
-[; ;main_master_p1.c: 113:     INTCONbits.PEIE = 1;
-[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
-"114
-[; ;main_master_p1.c: 114:     return;
-[e $UE 145  ]
 "115
-[; ;main_master_p1.c: 115: }
-[e :UE 145 ]
+[; ;main_master_p1.c: 115:     int_osc_MHz(1);
+[e ( _int_osc_MHz (1 -> -> 1 `i `uc ]
+"118
+[; ;main_master_p1.c: 118:     ANSEL = 0;
+[e = _ANSEL -> -> 0 `i `uc ]
+"119
+[; ;main_master_p1.c: 119:     ANSELH = 0;
+[e = _ANSELH -> -> 0 `i `uc ]
+"121
+[; ;main_master_p1.c: 121:     TRISA = 0;
+[e = _TRISA -> -> 0 `i `uc ]
+"122
+[; ;main_master_p1.c: 122:     TRISB = 0;
+[e = _TRISB -> -> 0 `i `uc ]
+"124
+[; ;main_master_p1.c: 124:     Lcd_Init();
+[e ( _Lcd_Init ..  ]
+"125
+[; ;main_master_p1.c: 125:     USART_set(9600);
+[e ( _USART_set (1 -> -> -> 9600 `i `l `ul ]
+"128
+[; ;main_master_p1.c: 128:     INTCONbits.GIE = 1;
+[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
+"129
+[; ;main_master_p1.c: 129:     INTCONbits.PEIE = 1;
+[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
+"130
+[; ;main_master_p1.c: 130:     return;
+[e $UE 150  ]
+"131
+[; ;main_master_p1.c: 131: }
+[e :UE 150 ]
 }
 [p f _sprintf 8388736 ]
-[a 1C 37 100 37 100 58 37 100 37 100 32 9 9 32 76 117 122 58 32 37 100 0 ]
-[a 2C 77 111 118 58 32 37 100 32 9 84 101 109 112 58 32 37 100 0 ]
+[a 1C 37 100 37 100 58 37 100 37 100 32 32 32 32 76 117 122 58 32 37 100 0 ]
+[a 2C 77 111 118 58 32 37 100 32 32 84 101 109 112 58 32 37 100 0 ]
