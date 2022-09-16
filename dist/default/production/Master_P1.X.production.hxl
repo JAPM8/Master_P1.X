@@ -9,12 +9,12 @@
 ### Memory Usage ###
  Intel Hex-file ranges:
   0h - 5h		(dist/default/production\Master_P1.X.production.hex)
-  8h - BADh		(dist/default/production\Master_P1.X.production.hex)
+  8h - BA3h		(dist/default/production\Master_P1.X.production.hex)
   4000h - 4007h		(dist/default/production\Master_P1.X.production.hex)
   400Eh - 4011h		(dist/default/production\Master_P1.X.production.hex)
  Unused ranges:
   6h - 7h
-  BAEh - 3FFFh
+  BA4h - 3FFFh
   4008h - 400Dh
 
 ### Hex Memory Map ###
@@ -210,7 +210,7 @@
 00000B70 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00000B80 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 00000B90 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-00000BA0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 -- --
+00000BA0 | H1 H1 H1 H1 -- -- -- -- -- -- -- -- -- -- -- --
 ----------------------------------------------------------
 00004000 | H1 H1 H1 H1 H1 H1 H1 H1 -- -- -- -- -- -- H1 H1
 00004010 | H1 H1 -- -- -- -- -- -- -- -- -- -- -- -- -- --

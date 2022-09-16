@@ -101,8 +101,8 @@ void read_red(void){
     if ((val>>1)== 'M'){
         mov = val & 0x01;
     }
-    else if((val & 0x80) == 128){
-        temp = val & 0x7F;
+    else{
+        temp = val;
     }
     return;
 }

@@ -436,17 +436,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e $U 147  ]
 "104
-[; ;main_master_p1.c: 104:     else if((val & 0x80) == 128){
+[; ;main_master_p1.c: 104:     else{
 [e :U 146 ]
-[e $ ! == & -> _val `i -> 128 `i -> 128 `i 148  ]
 {
 "105
-[; ;main_master_p1.c: 105:         temp = val & 0x7F;
-[e = _temp & -> _val `i -> 127 `i ]
+[; ;main_master_p1.c: 105:         temp = val;
+[e = _temp -> _val `i ]
 "106
 [; ;main_master_p1.c: 106:     }
 }
-[e :U 148 ]
 [e :U 147 ]
 "107
 [; ;main_master_p1.c: 107:     return;
@@ -490,10 +488,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
 "129
 [; ;main_master_p1.c: 129:     return;
-[e $UE 149  ]
+[e $UE 148  ]
 "130
 [; ;main_master_p1.c: 130: }
-[e :UE 149 ]
+[e :UE 148 ]
 }
 [p f _sprintf 8421504 ]
 [a 1C 37 100 37 100 58 37 100 37 100 32 32 32 32 76 117 122 58 32 37 50 100 0 ]
