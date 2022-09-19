@@ -59,7 +59,7 @@
  * Variables
  */
 char val, frow[20], srow[20];
-int mov = 0, temp = 24;
+int mov = 0, temp = 24,hrs = 15, mins = 15;
 /*
  * Prototipos de Función
  */
@@ -72,6 +72,7 @@ void __interrupt() master(void){
     //Interrupción UART
     if(PIR1bits.RCIF){ //Se verifica si hay un nuevo dato en el serial
         val = USART_read();
+        read_red();
     }
     return;
 }
@@ -83,8 +84,7 @@ void main(void) {
     setup();
     Lcd_Clear();
     while(1){
-        read_red();
-        sprintf(frow, "%d%d:%d%d    Luz: %2d", 2,3,4,2,95);
+        sprintf(frow, "%02d:%02d    Luz: %2d", hrs,mins,95);
         sprintf(srow, "Mov: %d  Temp: %2d",mov,temp);
         Lcd_Set_Cursor(1,1);
         Lcd_Write_String(frow);
@@ -98,11 +98,19 @@ void main(void) {
  * Funciones
  */
 void read_red(void){
-    if ((val>>1)== 'M'){
-        mov = val & 0x01;
-    }
-    else{
-        temp = val;
+    switch(val & 224){
+        case 128:
+            mov = val & 31;
+            break;
+        case 160:
+            temp = val & 31;
+            break;
+        case 224:
+            hrs = val & 31;
+            break;
+        default:
+            mins = val & 31;
+            break;
     }
     return;
 }

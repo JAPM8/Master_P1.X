@@ -360,6 +360,18 @@ sprintf(char * sp, const char * f, ...)
   width = 0;
 
   flag = 0;
+
+  for(;;) {
+   switch(*f) {
+# 596 "C:\\Program Files\\Microchip\\xc8\\v2.35\\pic\\sources\\c90\\common\\doprnt.c"
+   case '0':
+    flag |= 0x04;
+    f++;
+    continue;
+
+   }
+   break;
+  }
 # 614 "C:\\Program Files\\Microchip\\xc8\\v2.35\\pic\\sources\\c90\\common\\doprnt.c"
   if(isdigit((unsigned)*f)) {
    width = 0;
@@ -415,7 +427,23 @@ sprintf(char * sp, const char * f, ...)
    width -= c;
   else
    width = 0;
-# 1448 "C:\\Program Files\\Microchip\\xc8\\v2.35\\pic\\sources\\c90\\common\\doprnt.c"
+
+
+  if(flag & 0x04) {
+
+
+
+
+   if(flag & 0x03)
+    ((*sp++ = ('-')));
+# 1441 "C:\\Program Files\\Microchip\\xc8\\v2.35\\pic\\sources\\c90\\common\\doprnt.c"
+   if(width)
+    do
+     ((*sp++ = ('0')));
+    while(--width);
+
+  } else
+
   {
 
    if(width

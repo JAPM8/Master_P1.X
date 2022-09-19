@@ -15,16 +15,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 "13 ./USART.h
 [; ;./USART.h: 13: char USART_read(void);
 [v _USART_read `(uc ~T0 @X0 0 ef ]
+"67 main_master_p1.c
+[; ;main_master_p1.c: 67: void read_red(void);
+[v _read_red `(v ~T0 @X0 0 ef ]
 [p mainexit ]
-"66 main_master_p1.c
+"66
 [; ;main_master_p1.c: 66: void setup(void);
 [v _setup `(v ~T0 @X0 0 ef ]
 "50 ./LCD.h
 [; ;./LCD.h: 50: void Lcd_Clear(void);
 [v _Lcd_Clear `(v ~T0 @X0 0 ef ]
-"67 main_master_p1.c
-[; ;main_master_p1.c: 67: void read_red(void);
-[v _read_red `(v ~T0 @X0 0 ef ]
 "194 C:\Program Files\Microchip\xc8\v2.35\pic\include\c90\stdio.h
 [v _sprintf `(i ~T0 @X0 0 e1v`*uc`*Cuc ]
 "52 ./LCD.h
@@ -333,7 +333,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _frow `uc ~T0 @X0 -> 20 `i e ]
 [v _srow `uc ~T0 @X0 -> 20 `i e ]
 "62
-[; ;main_master_p1.c: 62: int mov = 0, temp = 24;
+[; ;main_master_p1.c: 62: int mov = 0, temp = 24,hrs = 15, mins = 15;
 [v _mov `i ~T0 @X0 1 e ]
 [i _mov
 -> 0 `i
@@ -341,6 +341,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _temp `i ~T0 @X0 1 e ]
 [i _temp
 -> 24 `i
+]
+[v _hrs `i ~T0 @X0 1 e ]
+[i _hrs
+-> 15 `i
+]
+[v _mins `i ~T0 @X0 1 e ]
+[i _mins
+-> 15 `i
 ]
 [v $root$_master `(v ~T0 @X0 0 e ]
 "71
@@ -357,39 +365,39 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main_master_p1.c: 74:         val = USART_read();
 [e = _val ( _USART_read ..  ]
 "75
-[; ;main_master_p1.c: 75:     }
+[; ;main_master_p1.c: 75:         read_red();
+[e ( _read_red ..  ]
+"76
+[; ;main_master_p1.c: 76:     }
 }
 [e :U 140 ]
-"76
-[; ;main_master_p1.c: 76:     return;
-[e $UE 139  ]
 "77
-[; ;main_master_p1.c: 77: }
+[; ;main_master_p1.c: 77:     return;
+[e $UE 139  ]
+"78
+[; ;main_master_p1.c: 78: }
 [e :UE 139 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"82
-[; ;main_master_p1.c: 82: void main(void) {
+"83
+[; ;main_master_p1.c: 83: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"83
-[; ;main_master_p1.c: 83:     setup();
-[e ( _setup ..  ]
 "84
-[; ;main_master_p1.c: 84:     Lcd_Clear();
-[e ( _Lcd_Clear ..  ]
+[; ;main_master_p1.c: 84:     setup();
+[e ( _setup ..  ]
 "85
-[; ;main_master_p1.c: 85:     while(1){
+[; ;main_master_p1.c: 85:     Lcd_Clear();
+[e ( _Lcd_Clear ..  ]
+"86
+[; ;main_master_p1.c: 86:     while(1){
 [e :U 143 ]
 {
-"86
-[; ;main_master_p1.c: 86:         read_red();
-[e ( _read_red ..  ]
 "87
-[; ;main_master_p1.c: 87:         sprintf(frow, "%d%d:%d%d    Luz: %2d", 2,3,4,2,95);
-[e ( _sprintf (1 , , , , , (. , &U _frow :s 1C -> 2 `i -> 3 `i -> 4 `i -> 2 `i -> 95 `i ]
+[; ;main_master_p1.c: 87:         sprintf(frow, "%02d:%02d    Luz: %2d", hrs,mins,95);
+[e ( _sprintf (1 , , , (. , &U _frow :s 1C _hrs _mins -> 95 `i ]
 "88
 [; ;main_master_p1.c: 88:         sprintf(srow, "Mov: %d  Temp: %2d",mov,temp);
 [e ( _sprintf (1 , , (. , &U _srow :s 2C _mov _temp ]
@@ -425,74 +433,102 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _read_red ]
 [f ]
 "101
-[; ;main_master_p1.c: 101:     if ((val>>1)== 'M'){
-[e $ ! == -> >> -> _val `i -> 1 `i `ui -> 77 `ui 146  ]
+[; ;main_master_p1.c: 101:     switch(val & 224){
+[e $U 147  ]
 {
 "102
-[; ;main_master_p1.c: 102:         mov = val & 0x01;
-[e = _mov & -> _val `i -> 1 `i ]
+[; ;main_master_p1.c: 102:         case 128:
+[e :U 148 ]
 "103
-[; ;main_master_p1.c: 103:     }
-}
-[e $U 147  ]
+[; ;main_master_p1.c: 103:             mov = val & 31;
+[e = _mov & -> _val `i -> 31 `i ]
 "104
-[; ;main_master_p1.c: 104:     else{
-[e :U 146 ]
-{
+[; ;main_master_p1.c: 104:             break;
+[e $U 146  ]
 "105
-[; ;main_master_p1.c: 105:         temp = val;
-[e = _temp -> _val `i ]
+[; ;main_master_p1.c: 105:         case 160:
+[e :U 149 ]
 "106
-[; ;main_master_p1.c: 106:     }
-}
-[e :U 147 ]
+[; ;main_master_p1.c: 106:             temp = val & 31;
+[e = _temp & -> _val `i -> 31 `i ]
 "107
-[; ;main_master_p1.c: 107:     return;
-[e $UE 145  ]
+[; ;main_master_p1.c: 107:             break;
+[e $U 146  ]
 "108
-[; ;main_master_p1.c: 108: }
+[; ;main_master_p1.c: 108:         case 224:
+[e :U 150 ]
+"109
+[; ;main_master_p1.c: 109:             hrs = val & 31;
+[e = _hrs & -> _val `i -> 31 `i ]
+"110
+[; ;main_master_p1.c: 110:             break;
+[e $U 146  ]
+"111
+[; ;main_master_p1.c: 111:         default:
+[e :U 151 ]
+"112
+[; ;main_master_p1.c: 112:             mins = val & 31;
+[e = _mins & -> _val `i -> 31 `i ]
+"113
+[; ;main_master_p1.c: 113:             break;
+[e $U 146  ]
+"114
+[; ;main_master_p1.c: 114:     }
+}
+[e $U 146  ]
+[e :U 147 ]
+[e [\ & -> _val `i -> 224 `i , $ -> 128 `i 148
+ , $ -> 160 `i 149
+ , $ -> 224 `i 150
+ 151 ]
+[e :U 146 ]
+"115
+[; ;main_master_p1.c: 115:     return;
+[e $UE 145  ]
+"116
+[; ;main_master_p1.c: 116: }
 [e :UE 145 ]
 }
-"113
-[; ;main_master_p1.c: 113: void setup(void){
+"121
+[; ;main_master_p1.c: 121: void setup(void){
 [v _setup `(v ~T0 @X0 1 ef ]
 {
 [e :U _setup ]
 [f ]
-"114
-[; ;main_master_p1.c: 114:     int_osc_MHz(1);
+"122
+[; ;main_master_p1.c: 122:     int_osc_MHz(1);
 [e ( _int_osc_MHz (1 -> -> 1 `i `uc ]
-"117
-[; ;main_master_p1.c: 117:     ANSEL = 0;
+"125
+[; ;main_master_p1.c: 125:     ANSEL = 0;
 [e = _ANSEL -> -> 0 `i `uc ]
-"118
-[; ;main_master_p1.c: 118:     ANSELH = 0;
+"126
+[; ;main_master_p1.c: 126:     ANSELH = 0;
 [e = _ANSELH -> -> 0 `i `uc ]
-"120
-[; ;main_master_p1.c: 120:     TRISA = 0;
-[e = _TRISA -> -> 0 `i `uc ]
-"121
-[; ;main_master_p1.c: 121:     TRISB = 0;
-[e = _TRISB -> -> 0 `i `uc ]
-"123
-[; ;main_master_p1.c: 123:     Lcd_Init();
-[e ( _Lcd_Init ..  ]
-"124
-[; ;main_master_p1.c: 124:     USART_set(9600);
-[e ( _USART_set (1 -> -> -> 9600 `i `l `ul ]
-"127
-[; ;main_master_p1.c: 127:     INTCONbits.GIE = 1;
-[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
 "128
-[; ;main_master_p1.c: 128:     INTCONbits.PEIE = 1;
-[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
+[; ;main_master_p1.c: 128:     TRISA = 0;
+[e = _TRISA -> -> 0 `i `uc ]
 "129
-[; ;main_master_p1.c: 129:     return;
-[e $UE 148  ]
-"130
-[; ;main_master_p1.c: 130: }
-[e :UE 148 ]
+[; ;main_master_p1.c: 129:     TRISB = 0;
+[e = _TRISB -> -> 0 `i `uc ]
+"131
+[; ;main_master_p1.c: 131:     Lcd_Init();
+[e ( _Lcd_Init ..  ]
+"132
+[; ;main_master_p1.c: 132:     USART_set(9600);
+[e ( _USART_set (1 -> -> -> 9600 `i `l `ul ]
+"135
+[; ;main_master_p1.c: 135:     INTCONbits.GIE = 1;
+[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
+"136
+[; ;main_master_p1.c: 136:     INTCONbits.PEIE = 1;
+[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
+"137
+[; ;main_master_p1.c: 137:     return;
+[e $UE 152  ]
+"138
+[; ;main_master_p1.c: 138: }
+[e :UE 152 ]
 }
-[p f _sprintf 8421504 ]
-[a 1C 37 100 37 100 58 37 100 37 100 32 32 32 32 76 117 122 58 32 37 50 100 0 ]
+[p f _sprintf 8421508 ]
+[a 1C 37 48 50 100 58 37 48 50 100 32 32 32 32 76 117 122 58 32 37 50 100 0 ]
 [a 2C 77 111 118 58 32 37 100 32 32 84 101 109 112 58 32 37 50 100 0 ]
