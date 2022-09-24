@@ -2789,7 +2789,7 @@ void Lcd_Shift_Left(void);
 # 43 "main_master_p1.c" 2
 # 61 "main_master_p1.c"
 char val, frow[20], srow[20];
-int mov = 0, temp = 24,hrs = 15, mins = 15;
+int mov = 0, temp = 24,hrs = 15, mins = 15, lux = 0;
 
 
 
@@ -2814,12 +2814,18 @@ void main(void) {
     setup();
     Lcd_Clear();
     while(1){
-        sprintf(frow, "%02d:%02d    Luz: %2d", hrs,mins,95);
-        sprintf(srow, "Mov: %d  Temp: %2d",mov,temp);
+        sprintf(frow, "%02d:%02d    Luz: %02d", hrs,mins,lux);
+        sprintf(srow, "Mov: %d  Temp: %02d",mov,temp);
         Lcd_Set_Cursor(1,1);
         Lcd_Write_String(frow);
         Lcd_Set_Cursor(2,1);
         Lcd_Write_String(srow);
+
+        if(lux <= 6)
+            PORTB = 0xFF;
+        else
+            PORTB = 0x00;
+
     }
     return;
 }
@@ -2834,6 +2840,9 @@ void read_red(void){
             break;
         case 160:
             temp = val & 31;
+            break;
+        case 192:
+            lux = val & 31;
             break;
         case 224:
             hrs = val & 31;
