@@ -36,7 +36,7 @@
 #endif
 
 #ifndef D7
-#define D7 RA5
+#define D7 RE0
 #endif
 
 #include <xc.h> // include processor files - each processor file is guarded.  

@@ -3,6 +3,48 @@
 [d edition pro ]
 [d chip 16F887 ]
 [d frameptr 0 ]
+"178 C:\Users\javyp\OneDrive\Documentos\UNIVERSIDAD\Lab_Digital\Proyecto_1\Master_P1.X\main_master_p1.c
+[e E1369 . `uc
+SPI_MASTER_OSC_DIV4 32
+SPI_MASTER_OSC_DIV16 33
+SPI_MASTER_OSC_DIV64 34
+SPI_MASTER_TMR2 35
+SPI_SLAVE_SS_EN 36
+SPI_SLAVE_SS_DIS 37
+]
+[e E1377 . `uc
+SPI_DATA_SAMPLE_MIDDLE 0
+SPI_DATA_SAMPLE_END 128
+]
+[e E1381 . `uc
+SPI_CLOCK_IDLE_HIGH 16
+SPI_CLOCK_IDLE_LOW 0
+]
+[e E1385 . `uc
+SPI_IDLE_2_ACTIVE 0
+SPI_ACTIVE_2_IDLE 64
+]
+"12 C:\Users\javyp\OneDrive\Documentos\UNIVERSIDAD\Lab_Digital\Proyecto_1\Master_P1.X\SPI.c
+[e E1292 . `uc
+SPI_MASTER_OSC_DIV4 32
+SPI_MASTER_OSC_DIV16 33
+SPI_MASTER_OSC_DIV64 34
+SPI_MASTER_TMR2 35
+SPI_SLAVE_SS_EN 36
+SPI_SLAVE_SS_DIS 37
+]
+[e E1300 . `uc
+SPI_DATA_SAMPLE_MIDDLE 0
+SPI_DATA_SAMPLE_END 128
+]
+[e E1304 . `uc
+SPI_CLOCK_IDLE_HIGH 16
+SPI_CLOCK_IDLE_LOW 0
+]
+[e E1308 . `uc
+SPI_IDLE_2_ACTIVE 0
+SPI_ACTIVE_2_IDLE 64
+]
 "5 C:\Program Files\Microchip\xc8\v2.35\pic\sources\c90\common\__lldiv.c
 [v ___lldiv __lldiv `(ul  1 e 4 0 ]
 "505 C:\Program Files\Microchip\xc8\v2.35\pic\sources\c90\common\doprnt.c
@@ -37,23 +79,43 @@
 [v _Lcd_Write_Char Lcd_Write_Char `(v  1 e 1 0 ]
 "101
 [v _Lcd_Write_String Lcd_Write_String `(v  1 e 1 0 ]
-"71 C:\Users\javyp\OneDrive\Documentos\UNIVERSIDAD\Lab_Digital\Proyecto_1\Master_P1.X\main_master_p1.c
+"72 C:\Users\javyp\OneDrive\Documentos\UNIVERSIDAD\Lab_Digital\Proyecto_1\Master_P1.X\main_master_p1.c
 [v _master master `II(v  1 e 1 0 ]
-"83
+"108
 [v _main main `(v  1 e 1 0 ]
-"106
+"131
 [v _read_red read_red `(v  1 e 1 0 ]
-"130
+"155
 [v _setup setup `(v  1 e 1 0 ]
 "13 C:\Users\javyp\OneDrive\Documentos\UNIVERSIDAD\Lab_Digital\Proyecto_1\Master_P1.X\osc.c
 [v _int_osc_MHz int_osc_MHz `(v  1 e 1 0 ]
+"12 C:\Users\javyp\OneDrive\Documentos\UNIVERSIDAD\Lab_Digital\Proyecto_1\Master_P1.X\SPI.c
+[v _spiInit spiInit `(v  1 e 1 0 ]
+"29
+[v _spiReceiveWait spiReceiveWait `(v  1 s 1 spiReceiveWait ]
+"34
+[v _spiWrite spiWrite `(v  1 e 1 0 ]
+"47
+[v _spiRead spiRead `(uc  1 e 1 0 ]
 "12 C:\Users\javyp\OneDrive\Documentos\UNIVERSIDAD\Lab_Digital\Proyecto_1\Master_P1.X\USART.c
 [v _USART_set USART_set `(v  1 e 1 0 ]
 "30
 [v _USART_read USART_read `(uc  1 e 1 0 ]
-"229 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f887.h
+[s S112 . 1 `uc 1 RA0 1 0 :1:0 
+`uc 1 RA1 1 0 :1:1 
+`uc 1 RA2 1 0 :1:2 
+`uc 1 RA3 1 0 :1:3 
+`uc 1 RA4 1 0 :1:4 
+`uc 1 RA5 1 0 :1:5 
+`uc 1 RA6 1 0 :1:6 
+`uc 1 RA7 1 0 :1:7 
+]
+"184 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f887.h
+[u S121 . 1 `S112 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES121  1 e 1 @5 ]
+"229
 [v _PORTB PORTB `VEuc  1 e 1 @6 ]
-[s S93 . 1 `uc 1 RBIF 1 0 :1:0 
+[s S180 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -63,13 +125,13 @@
 `uc 1 GIE 1 0 :1:7 
 ]
 "483
-[s S102 . 1 `uc 1 . 1 0 :2:0 
+[s S189 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 TMR0IE 1 0 :1:5 
 ]
-[u S107 . 1 `S93 1 . 1 0 `S102 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES107  1 e 1 @11 ]
+[u S194 . 1 `S180 1 . 1 0 `S189 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES194  1 e 1 @11 ]
 [s S22 . 1 `uc 1 TMR1IF 1 0 :1:0 
 `uc 1 TMR2IF 1 0 :1:1 
 `uc 1 CCP1IF 1 0 :1:2 
@@ -81,7 +143,11 @@
 "554
 [u S30 . 1 `S22 1 . 1 0 ]
 [v _PIR1bits PIR1bits `VES30  1 e 1 @12 ]
-[s S291 . 1 `uc 1 RX9D 1 0 :1:0 
+"844
+[v _SSPBUF SSPBUF `VEuc  1 e 1 @19 ]
+"851
+[v _SSPCON SSPCON `VEuc  1 e 1 @20 ]
+[s S425 . 1 `uc 1 RX9D 1 0 :1:0 
 `uc 1 OERR 1 0 :1:1 
 `uc 1 FERR 1 0 :1:2 
 `uc 1 ADDEN 1 0 :1:3 
@@ -91,25 +157,55 @@
 `uc 1 SPEN 1 0 :1:7 
 ]
 "1069
-[s S300 . 1 `uc 1 RCD8 1 0 :1:0 
+[s S434 . 1 `uc 1 RCD8 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 RC9 1 0 :1:6 
 ]
-[s S304 . 1 `uc 1 . 1 0 :6:0 
+[s S438 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 nRC8 1 0 :1:6 
 ]
-[s S307 . 1 `uc 1 . 1 0 :6:0 
+[s S441 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 RC8_9 1 0 :1:6 
 ]
-[u S310 . 1 `S291 1 . 1 0 `S300 1 . 1 0 `S304 1 . 1 0 `S307 1 . 1 0 ]
-[v _RCSTAbits RCSTAbits `VES310  1 e 1 @24 ]
+[u S444 . 1 `S425 1 . 1 0 `S434 1 . 1 0 `S438 1 . 1 0 `S441 1 . 1 0 ]
+[v _RCSTAbits RCSTAbits `VES444  1 e 1 @24 ]
 "1141
 [v _RCREG RCREG `VEuc  1 e 1 @26 ]
-"1417
-[v _TRISA TRISA `VEuc  1 e 1 @133 ]
+[s S91 . 1 `uc 1 TRISA0 1 0 :1:0 
+`uc 1 TRISA1 1 0 :1:1 
+`uc 1 TRISA2 1 0 :1:2 
+`uc 1 TRISA3 1 0 :1:3 
+`uc 1 TRISA4 1 0 :1:4 
+`uc 1 TRISA5 1 0 :1:5 
+`uc 1 TRISA6 1 0 :1:6 
+`uc 1 TRISA7 1 0 :1:7 
+]
+"1434
+[u S100 . 1 `S91 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES100  1 e 1 @133 ]
 "1479
 [v _TRISB TRISB `VEuc  1 e 1 @134 ]
-[s S335 . 1 `uc 1 TMR1IE 1 0 :1:0 
+[s S524 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 TRISC3 1 0 :1:3 
+`uc 1 TRISC4 1 0 :1:4 
+`uc 1 TRISC5 1 0 :1:5 
+`uc 1 TRISC6 1 0 :1:6 
+`uc 1 TRISC7 1 0 :1:7 
+]
+"1558
+[u S533 . 1 `S524 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES533  1 e 1 @135 ]
+[s S134 . 1 `uc 1 TRISE0 1 0 :1:0 
+`uc 1 TRISE1 1 0 :1:1 
+`uc 1 TRISE2 1 0 :1:2 
+`uc 1 TRISE3 1 0 :1:3 
+]
+"1678
+[u S139 . 1 `S134 1 . 1 0 ]
+[v _TRISEbits TRISEbits `VES139  1 e 1 @137 ]
+[s S212 . 1 `uc 1 TMR1IE 1 0 :1:0 
 `uc 1 TMR2IE 1 0 :1:1 
 `uc 1 CCP1IE 1 0 :1:2 
 `uc 1 SSPIE 1 0 :1:3 
@@ -118,23 +214,68 @@
 `uc 1 ADIE 1 0 :1:6 
 ]
 "1719
-[u S343 . 1 `S335 1 . 1 0 ]
-[v _PIE1bits PIE1bits `VES343  1 e 1 @140 ]
-[s S198 . 1 `uc 1 SCS 1 0 :1:0 
+[u S220 . 1 `S212 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES220  1 e 1 @140 ]
+[s S332 . 1 `uc 1 SCS 1 0 :1:0 
 `uc 1 LTS 1 0 :1:1 
 `uc 1 HTS 1 0 :1:2 
 `uc 1 OSTS 1 0 :1:3 
 `uc 1 IRCF 1 0 :3:4 
 ]
 "1883
-[s S204 . 1 `uc 1 . 1 0 :4:0 
+[s S338 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 IRCF0 1 0 :1:4 
 `uc 1 IRCF1 1 0 :1:5 
 `uc 1 IRCF2 1 0 :1:6 
 ]
-[u S209 . 1 `S198 1 . 1 0 `S204 1 . 1 0 ]
-[v _OSCCONbits OSCCONbits `VES209  1 e 1 @143 ]
-[s S231 . 1 `uc 1 TX9D 1 0 :1:0 
+[u S343 . 1 `S332 1 . 1 0 `S338 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES343  1 e 1 @143 ]
+"2178
+[v _SSPSTAT SSPSTAT `VEuc  1 e 1 @148 ]
+[s S547 . 1 `uc 1 BF 1 0 :1:0 
+`uc 1 UA 1 0 :1:1 
+`uc 1 R_nW 1 0 :1:2 
+`uc 1 S 1 0 :1:3 
+`uc 1 P 1 0 :1:4 
+`uc 1 D_nA 1 0 :1:5 
+`uc 1 CKE 1 0 :1:6 
+`uc 1 SMP 1 0 :1:7 
+]
+"2232
+[s S556 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 D 1 0 :1:5 
+]
+[s S561 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 I2C_READ 1 0 :1:2 
+`uc 1 I2C_START 1 0 :1:3 
+`uc 1 I2C_STOP 1 0 :1:4 
+`uc 1 I2C_DATA 1 0 :1:5 
+]
+[s S567 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nW 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nA 1 0 :1:5 
+]
+[s S572 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nWRITE 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nADDRESS 1 0 :1:5 
+]
+[s S577 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R_W 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 D_A 1 0 :1:5 
+]
+[s S582 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 READ_WRITE 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 DATA_ADDRESS 1 0 :1:5 
+]
+[u S587 . 1 `S547 1 . 1 0 `S556 1 . 1 0 `S561 1 . 1 0 `S567 1 . 1 0 `S572 1 . 1 0 `S577 1 . 1 0 `S582 1 . 1 0 ]
+[v _SSPSTATbits SSPSTATbits `VES587  1 e 1 @148 ]
+[s S365 . 1 `uc 1 TX9D 1 0 :1:0 
 `uc 1 TRMT 1 0 :1:1 
 `uc 1 BRGH 1 0 :1:2 
 `uc 1 SENDB 1 0 :1:3 
@@ -144,20 +285,20 @@
 `uc 1 CSRC 1 0 :1:7 
 ]
 "2583
-[s S240 . 1 `uc 1 TXD8 1 0 :1:0 
+[s S374 . 1 `uc 1 TXD8 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 nTX8 1 0 :1:6 
 ]
-[s S244 . 1 `uc 1 . 1 0 :6:0 
+[s S378 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 TX8_9 1 0 :1:6 
 ]
-[u S247 . 1 `S231 1 . 1 0 `S240 1 . 1 0 `S244 1 . 1 0 ]
-[v _TXSTAbits TXSTAbits `VES247  1 e 1 @152 ]
+[u S381 . 1 `S365 1 . 1 0 `S374 1 . 1 0 `S378 1 . 1 0 ]
+[v _TXSTAbits TXSTAbits `VES381  1 e 1 @152 ]
 "2643
 [v _SPBRG SPBRG `VEuc  1 e 1 @153 ]
 "2705
 [v _SPBRGH SPBRGH `VEuc  1 e 1 @154 ]
-[s S268 . 1 `uc 1 ABDEN 1 0 :1:0 
+[s S402 . 1 `uc 1 ABDEN 1 0 :1:0 
 `uc 1 WUE 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 BRG16 1 0 :1:3 
@@ -167,8 +308,8 @@
 `uc 1 ABDOVF 1 0 :1:7 
 ]
 "3353
-[u S277 . 1 `S268 1 . 1 0 ]
-[v _BAUDCTLbits BAUDCTLbits `VES277  1 e 1 @391 ]
+[u S411 . 1 `S402 1 . 1 0 ]
+[v _BAUDCTLbits BAUDCTLbits `VES411  1 e 1 @391 ]
 "3388
 [v _ANSEL ANSEL `VEuc  1 e 1 @392 ]
 "3450
@@ -183,46 +324,47 @@
 [v _RA3 RA3 `VEb  1 e 0 @43 ]
 "4096
 [v _RA4 RA4 `VEb  1 e 0 @44 ]
-"4099
-[v _RA5 RA5 `VEb  1 e 0 @45 ]
+"4210
+[v _RE0 RE0 `VEb  1 e 0 @72 ]
 "358 C:\Program Files\Microchip\xc8\v2.35\pic\sources\c90\common\doprnt.c
 [v _dpowers dpowers `DC[5]ui  1 s 10 dpowers ]
-"61 C:\Users\javyp\OneDrive\Documentos\UNIVERSIDAD\Lab_Digital\Proyecto_1\Master_P1.X\main_master_p1.c
+"62 C:\Users\javyp\OneDrive\Documentos\UNIVERSIDAD\Lab_Digital\Proyecto_1\Master_P1.X\main_master_p1.c
 [v _val val `uc  1 e 1 0 ]
 [v _frow frow `[20]uc  1 e 20 0 ]
 [v _srow srow `[20]uc  1 e 20 0 ]
-"62
+"63
+[v _req req `i  1 e 2 0 ]
 [v _mov mov `i  1 e 2 0 ]
 [v _temp temp `i  1 e 2 0 ]
 [v _hrs hrs `i  1 e 2 0 ]
 [v _mins mins `i  1 e 2 0 ]
 [v _lux lux `i  1 e 2 0 ]
-"83
+"108
 [v _main main `(v  1 e 1 0 ]
 {
-"101
+"126
 } 0
 "505 C:\Program Files\Microchip\xc8\v2.35\pic\sources\c90\common\doprnt.c
 [v _sprintf sprintf `(i  1 e 2 0 ]
 {
 [v sprintf@sp sp `*.4uc  1 a 1 wreg ]
 "514
-[v sprintf@width width `i  1 a 2 28 ]
+[v sprintf@width width `i  1 a 2 29 ]
 "545
-[v sprintf@val val `ui  1 a 2 25 ]
+[v sprintf@val val `ui  1 a 2 26 ]
 "512
-[v sprintf@c c `uc  1 a 1 31 ]
+[v sprintf@c c `uc  1 a 1 32 ]
 "525
-[v sprintf@flag flag `uc  1 a 1 27 ]
+[v sprintf@flag flag `uc  1 a 1 28 ]
 "521
-[v sprintf@prec prec `c  1 a 1 24 ]
+[v sprintf@prec prec `c  1 a 1 25 ]
 "507
-[v sprintf@ap ap `[1]*.4v  1 a 1 23 ]
+[v sprintf@ap ap `[1]*.4v  1 a 1 24 ]
 "505
 [v sprintf@sp sp `*.4uc  1 a 1 wreg ]
-[v sprintf@f f `*.24DCuc  1 p 1 13 ]
+[v sprintf@f f `*.24DCuc  1 p 1 14 ]
 "550
-[v sprintf@sp sp `*.4uc  1 a 1 30 ]
+[v sprintf@sp sp `*.4uc  1 a 1 31 ]
 "1567
 } 0
 "8 C:\Program Files\Microchip\xc8\v2.35\pic\sources\c90\common\isdigit.c
@@ -248,50 +390,62 @@
 [v ___lwmod __lwmod `(ui  1 e 2 0 ]
 {
 "10
-[v ___lwmod@counter counter `uc  1 a 1 12 ]
+[v ___lwmod@counter counter `uc  1 a 1 13 ]
 "5
-[v ___lwmod@divisor divisor `ui  1 p 2 7 ]
-[v ___lwmod@dividend dividend `ui  1 p 2 9 ]
+[v ___lwmod@divisor divisor `ui  1 p 2 8 ]
+[v ___lwmod@dividend dividend `ui  1 p 2 10 ]
 "25
 } 0
 "5 C:\Program Files\Microchip\xc8\v2.35\pic\sources\c90\common\lwdiv.c
 [v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
 {
 "10
-[v ___lwdiv@quotient quotient `ui  1 a 2 4 ]
+[v ___lwdiv@quotient quotient `ui  1 a 2 5 ]
 "11
-[v ___lwdiv@counter counter `uc  1 a 1 6 ]
+[v ___lwdiv@counter counter `uc  1 a 1 7 ]
 "5
 [v ___lwdiv@divisor divisor `ui  1 p 2 0 ]
 [v ___lwdiv@dividend dividend `ui  1 p 2 2 ]
 "30
 } 0
-"130 C:\Users\javyp\OneDrive\Documentos\UNIVERSIDAD\Lab_Digital\Proyecto_1\Master_P1.X\main_master_p1.c
+"155 C:\Users\javyp\OneDrive\Documentos\UNIVERSIDAD\Lab_Digital\Proyecto_1\Master_P1.X\main_master_p1.c
 [v _setup setup `(v  1 e 1 0 ]
 {
-"147
+"187
+} 0
+"12 C:\Users\javyp\OneDrive\Documentos\UNIVERSIDAD\Lab_Digital\Proyecto_1\Master_P1.X\SPI.c
+[v _spiInit spiInit `(v  1 e 1 0 ]
+{
+[v spiInit@sType sType `E1292  1 a 1 wreg ]
+[v spiInit@sType sType `E1292  1 a 1 wreg ]
+[v spiInit@sDataSample sDataSample `E1300  1 p 1 0 ]
+[v spiInit@sClockIdle sClockIdle `E1304  1 p 1 1 ]
+[v spiInit@sTransmitEdge sTransmitEdge `E1308  1 p 1 2 ]
+"14
+[v spiInit@sType sType `E1292  1 a 1 3 ]
+"27
 } 0
 "13 C:\Users\javyp\OneDrive\Documentos\UNIVERSIDAD\Lab_Digital\Proyecto_1\Master_P1.X\osc.c
 [v _int_osc_MHz int_osc_MHz `(v  1 e 1 0 ]
 {
 [v int_osc_MHz@freq freq `uc  1 a 1 wreg ]
 [v int_osc_MHz@freq freq `uc  1 a 1 wreg ]
-[v int_osc_MHz@freq freq `uc  1 a 1 6 ]
+[v int_osc_MHz@freq freq `uc  1 a 1 2 ]
 "32
 } 0
 "12 C:\Users\javyp\OneDrive\Documentos\UNIVERSIDAD\Lab_Digital\Proyecto_1\Master_P1.X\USART.c
 [v _USART_set USART_set `(v  1 e 1 0 ]
 {
-[v USART_set@baudrate baudrate `DCul  1 p 4 13 ]
+[v USART_set@baudrate baudrate `DCul  1 p 4 14 ]
 "28
 } 0
 "5 C:\Program Files\Microchip\xc8\v2.35\pic\sources\c90\common\__lldiv.c
 [v ___lldiv __lldiv `(ul  1 e 4 0 ]
 {
 "10
-[v ___lldiv@quotient quotient `ul  1 a 4 8 ]
+[v ___lldiv@quotient quotient `ul  1 a 4 9 ]
 "11
-[v ___lldiv@counter counter `uc  1 a 1 12 ]
+[v ___lldiv@counter counter `uc  1 a 1 13 ]
 "5
 [v ___lldiv@divisor divisor `ul  1 p 4 0 ]
 [v ___lldiv@dividend dividend `ul  1 p 4 4 ]
@@ -307,11 +461,11 @@
 {
 [v Lcd_Write_String@a a `*.4uc  1 a 1 wreg ]
 "102
-[v Lcd_Write_String@i i `i  1 a 2 5 ]
+[v Lcd_Write_String@i i `i  1 a 2 6 ]
 "101
 [v Lcd_Write_String@a a `*.4uc  1 a 1 wreg ]
 "103
-[v Lcd_Write_String@a a `*.4uc  1 a 1 7 ]
+[v Lcd_Write_String@a a `*.4uc  1 a 1 8 ]
 "105
 } 0
 "86
@@ -319,12 +473,12 @@
 {
 [v Lcd_Write_Char@a a `uc  1 a 1 wreg ]
 "87
-[v Lcd_Write_Char@y y `uc  1 a 1 2 ]
-[v Lcd_Write_Char@temp temp `uc  1 a 1 1 ]
+[v Lcd_Write_Char@y y `uc  1 a 1 3 ]
+[v Lcd_Write_Char@temp temp `uc  1 a 1 2 ]
 "86
 [v Lcd_Write_Char@a a `uc  1 a 1 wreg ]
 "88
-[v Lcd_Write_Char@a a `uc  1 a 1 3 ]
+[v Lcd_Write_Char@a a `uc  1 a 1 4 ]
 "99
 } 0
 "50
@@ -332,14 +486,14 @@
 {
 [v Lcd_Set_Cursor@a a `uc  1 a 1 wreg ]
 "52
-[v Lcd_Set_Cursor@temp temp `uc  1 a 1 8 ]
-[v Lcd_Set_Cursor@y y `uc  1 a 1 7 ]
-[v Lcd_Set_Cursor@z z `uc  1 a 1 6 ]
+[v Lcd_Set_Cursor@temp temp `uc  1 a 1 9 ]
+[v Lcd_Set_Cursor@y y `uc  1 a 1 8 ]
+[v Lcd_Set_Cursor@z z `uc  1 a 1 7 ]
 "50
 [v Lcd_Set_Cursor@a a `uc  1 a 1 wreg ]
-[v Lcd_Set_Cursor@b b `uc  1 p 1 2 ]
+[v Lcd_Set_Cursor@b b `uc  1 p 1 3 ]
 "53
-[v Lcd_Set_Cursor@a a `uc  1 a 1 5 ]
+[v Lcd_Set_Cursor@a a `uc  1 a 1 6 ]
 "66
 } 0
 "45
@@ -353,7 +507,7 @@
 [v Lcd_Cmd@a a `uc  1 a 1 wreg ]
 [v Lcd_Cmd@a a `uc  1 a 1 wreg ]
 "38
-[v Lcd_Cmd@a a `uc  1 a 1 1 ]
+[v Lcd_Cmd@a a `uc  1 a 1 2 ]
 "43
 } 0
 "13
@@ -362,18 +516,37 @@
 [v Lcd_Port@a a `uc  1 a 1 wreg ]
 [v Lcd_Port@a a `uc  1 a 1 wreg ]
 "15
-[v Lcd_Port@a a `uc  1 a 1 6 ]
+[v Lcd_Port@a a `uc  1 a 1 0 ]
 "34
 } 0
-"71 C:\Users\javyp\OneDrive\Documentos\UNIVERSIDAD\Lab_Digital\Proyecto_1\Master_P1.X\main_master_p1.c
+"72 C:\Users\javyp\OneDrive\Documentos\UNIVERSIDAD\Lab_Digital\Proyecto_1\Master_P1.X\main_master_p1.c
 [v _master master `II(v  1 e 1 0 ]
 {
-"78
+"103
 } 0
-"106
+"34 C:\Users\javyp\OneDrive\Documentos\UNIVERSIDAD\Lab_Digital\Proyecto_1\Master_P1.X\SPI.c
+[v _spiWrite spiWrite `(v  1 e 1 0 ]
+{
+[v spiWrite@dat dat `uc  1 a 1 wreg ]
+[v spiWrite@dat dat `uc  1 a 1 wreg ]
+"36
+[v spiWrite@dat dat `uc  1 a 1 0 ]
+"37
+} 0
+"47
+[v _spiRead spiRead `(uc  1 e 1 0 ]
+{
+"51
+} 0
+"29
+[v _spiReceiveWait spiReceiveWait `(v  1 s 1 spiReceiveWait ]
+{
+"32
+} 0
+"131 C:\Users\javyp\OneDrive\Documentos\UNIVERSIDAD\Lab_Digital\Proyecto_1\Master_P1.X\main_master_p1.c
 [v _read_red read_red `(v  1 e 1 0 ]
 {
-"125
+"150
 } 0
 "30 C:\Users\javyp\OneDrive\Documentos\UNIVERSIDAD\Lab_Digital\Proyecto_1\Master_P1.X\USART.c
 [v _USART_read USART_read `(uc  1 e 1 0 ]

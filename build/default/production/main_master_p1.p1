@@ -15,12 +15,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 "13 ./USART.h
 [; ;./USART.h: 13: char USART_read(void);
 [v _USART_read `(uc ~T0 @X0 0 ef ]
-"67 main_master_p1.c
-[; ;main_master_p1.c: 67: void read_red(void);
+"68 main_master_p1.c
+[; ;main_master_p1.c: 68: void read_red(void);
 [v _read_red `(v ~T0 @X0 0 ef ]
+"49 ./SPI.h
+[; ;./SPI.h: 49: char spiRead();
+[v _spiRead `(uc ~T0 @X0 0 e? ]
+"47
+[; ;./SPI.h: 47: void spiWrite(char);
+[v _spiWrite `(v ~T0 @X0 0 ef1`uc ]
 [p mainexit ]
-"66
-[; ;main_master_p1.c: 66: void setup(void);
+"67 main_master_p1.c
+[; ;main_master_p1.c: 67: void setup(void);
 [v _setup `(v ~T0 @X0 0 ef ]
 "50 ./LCD.h
 [; ;./LCD.h: 50: void Lcd_Clear(void);
@@ -45,18 +51,61 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3450
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f887.h: 3450: extern volatile unsigned char ANSELH __attribute__((address(0x189)));
 [v _ANSELH `Vuc ~T0 @X0 0 e@393 ]
-"1417
-[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f887.h: 1417: extern volatile unsigned char TRISA __attribute__((address(0x085)));
-[v _TRISA `Vuc ~T0 @X0 0 e@133 ]
+"1423
+[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f887.h: 1423:     struct {
+[s S53 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S53 . TRISA0 TRISA1 TRISA2 TRISA3 TRISA4 TRISA5 TRISA6 TRISA7 ]
+"1422
+[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f887.h: 1422: typedef union {
+[u S52 `S53 1 ]
+[n S52 . . ]
+"1434
+[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f887.h: 1434: extern volatile TRISAbits_t TRISAbits __attribute__((address(0x085)));
+[v _TRISAbits `VS52 ~T0 @X0 0 e@133 ]
+"173
+[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f887.h: 173:     struct {
+[s S6 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S6 . RA0 RA1 RA2 RA3 RA4 RA5 RA6 RA7 ]
+"172
+[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f887.h: 172: typedef union {
+[u S5 `S6 1 ]
+[n S5 . . ]
+"184
+[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f887.h: 184: extern volatile PORTAbits_t PORTAbits __attribute__((address(0x005)));
+[v _PORTAbits `VS5 ~T0 @X0 0 e@5 ]
 "1479
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f887.h: 1479: extern volatile unsigned char TRISB __attribute__((address(0x086)));
 [v _TRISB `Vuc ~T0 @X0 0 e@134 ]
+"1671
+[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f887.h: 1671:     struct {
+[s S61 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S61 . TRISE0 TRISE1 TRISE2 TRISE3 ]
+"1670
+[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f887.h: 1670: typedef union {
+[u S60 `S61 1 ]
+[n S60 . . ]
+"1678
+[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f887.h: 1678: extern volatile TRISEbits_t TRISEbits __attribute__((address(0x089)));
+[v _TRISEbits `VS60 ~T0 @X0 0 e@137 ]
 "54 ./LCD.h
 [; ;./LCD.h: 54: void Lcd_Init(void);
 [v _Lcd_Init `(v ~T0 @X0 0 ef ]
 "12 ./USART.h
 [; ;./USART.h: 12: void USART_set(const unsigned long int baudrate);
 [v _USART_set `(v ~T0 @X0 0 ef1`Cul ]
+"178 main_master_p1.c
+[; ;main_master_p1.c: 178:     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
+[c E1369 32 33 34 35 36 37 .. ]
+[n E1369 . SPI_MASTER_OSC_DIV4 SPI_MASTER_OSC_DIV16 SPI_MASTER_OSC_DIV64 SPI_MASTER_TMR2 SPI_SLAVE_SS_EN SPI_SLAVE_SS_DIS  ]
+[c E1377 0 128 .. ]
+[n E1377 . SPI_DATA_SAMPLE_MIDDLE SPI_DATA_SAMPLE_END  ]
+[c E1381 16 0 .. ]
+[n E1381 . SPI_CLOCK_IDLE_HIGH SPI_CLOCK_IDLE_LOW  ]
+[c E1385 0 64 .. ]
+[n E1385 . SPI_IDLE_2_ACTIVE SPI_ACTIVE_2_IDLE  ]
+"46 ./SPI.h
+[; ;./SPI.h: 46: void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
+[v _spiInit `(v ~T0 @X0 0 ef4`E1369`E1377`E1381`E1385 ]
 "466 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f887.h: 466:     struct {
 [s S16 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -72,6 +121,17 @@ Version 4.0 HI-TECH Software Intermediate Code
 "483
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f887.h: 483: extern volatile INTCONbits_t INTCONbits __attribute__((address(0x00B)));
 [v _INTCONbits `VS15 ~T0 @X0 0 e@11 ]
+"1709
+[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f887.h: 1709:     struct {
+[s S63 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S63 . TMR1IE TMR2IE CCP1IE SSPIE TXIE RCIE ADIE ]
+"1708
+[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f887.h: 1708: typedef union {
+[u S62 `S63 1 ]
+[n S62 . . ]
+"1719
+[; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f887.h: 1719: extern volatile PIE1bits_t PIE1bits __attribute__((address(0x08C)));
+[v _PIE1bits `VS62 ~T0 @X0 0 e@140 ]
 "16 main_master_p1.c
 [p x FOSC  =  INTRC_NOCLKOUT ]
 "17
@@ -330,13 +390,17 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3547
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\pic\include\proc\pic16f887.h: 3547: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"61 main_master_p1.c
-[; ;main_master_p1.c: 61: char val, frow[20], srow[20];
+"62 main_master_p1.c
+[; ;main_master_p1.c: 62: char val, frow[20], srow[20];
 [v _val `uc ~T0 @X0 1 e ]
 [v _frow `uc ~T0 @X0 -> 20 `i e ]
 [v _srow `uc ~T0 @X0 -> 20 `i e ]
-"62
-[; ;main_master_p1.c: 62: int mov = 0, temp = 24,hrs = 15, mins = 15, lux = 0;
+"63
+[; ;main_master_p1.c: 63: int req = 10, mov = 0, temp = 24,hrs = 15, mins = 15, lux = 0;
+[v _req `i ~T0 @X0 1 e ]
+[i _req
+-> 10 `i
+]
 [v _mov `i ~T0 @X0 1 e ]
 [i _mov
 -> 0 `i
@@ -358,207 +422,318 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> 0 `i
 ]
 [v $root$_master `(v ~T0 @X0 0 e ]
-"71
-[; ;main_master_p1.c: 71: void __attribute__((picinterrupt(("")))) master(void){
+"72
+[; ;main_master_p1.c: 72: void __attribute__((picinterrupt(("")))) master(void){
 [v _master `(v ~T1 @X0 1 ef ]
 {
 [e :U _master ]
 [f ]
-"73
-[; ;main_master_p1.c: 73:     if(PIR1bits.RCIF){
+"74
+[; ;main_master_p1.c: 74:     if(PIR1bits.RCIF){
 [e $ ! != -> . . _PIR1bits 0 5 `i -> 0 `i 140  ]
 {
-"74
-[; ;main_master_p1.c: 74:         val = USART_read();
-[e = _val ( _USART_read ..  ]
 "75
-[; ;main_master_p1.c: 75:         read_red();
-[e ( _read_red ..  ]
+[; ;main_master_p1.c: 75:         val = USART_read();
+[e = _val ( _USART_read ..  ]
 "76
-[; ;main_master_p1.c: 76:     }
+[; ;main_master_p1.c: 76:         read_red();
+[e ( _read_red ..  ]
+"77
+[; ;main_master_p1.c: 77:     }
 }
 [e :U 140 ]
-"77
-[; ;main_master_p1.c: 77:     return;
-[e $UE 139  ]
 "78
-[; ;main_master_p1.c: 78: }
+[; ;main_master_p1.c: 78:     if (PIR1bits.SSPIF){
+[e $ ! != -> . . _PIR1bits 0 3 `i -> 0 `i 141  ]
+{
+"79
+[; ;main_master_p1.c: 79:         req = spiRead();
+[e = _req -> ( _spiRead ..  `i ]
+"80
+[; ;main_master_p1.c: 80:         switch (req){
+[e $U 143  ]
+{
+"81
+[; ;main_master_p1.c: 81:             case 0:
+[e :U 144 ]
+"82
+[; ;main_master_p1.c: 82:                 spiWrite(temp);
+[e ( _spiWrite (1 -> _temp `uc ]
+"83
+[; ;main_master_p1.c: 83:                 break;
+[e $U 142  ]
+"84
+[; ;main_master_p1.c: 84:             case 1:
+[e :U 145 ]
+"85
+[; ;main_master_p1.c: 85:                 spiWrite(mov);
+[e ( _spiWrite (1 -> _mov `uc ]
+"86
+[; ;main_master_p1.c: 86:                 break;
+[e $U 142  ]
+"87
+[; ;main_master_p1.c: 87:             case 2:
+[e :U 146 ]
+"88
+[; ;main_master_p1.c: 88:                 spiWrite(mins);
+[e ( _spiWrite (1 -> _mins `uc ]
+"89
+[; ;main_master_p1.c: 89:                 break;
+[e $U 142  ]
+"90
+[; ;main_master_p1.c: 90:             case 3:
+[e :U 147 ]
+"91
+[; ;main_master_p1.c: 91:                 spiWrite(hrs);
+[e ( _spiWrite (1 -> _hrs `uc ]
+"92
+[; ;main_master_p1.c: 92:                 break;
+[e $U 142  ]
+"93
+[; ;main_master_p1.c: 93:             case 4:
+[e :U 148 ]
+"94
+[; ;main_master_p1.c: 94:                 spiWrite(lux);
+[e ( _spiWrite (1 -> _lux `uc ]
+"95
+[; ;main_master_p1.c: 95:                 break;
+[e $U 142  ]
+"96
+[; ;main_master_p1.c: 96:             default:
+[e :U 149 ]
+"97
+[; ;main_master_p1.c: 97:                 break;
+[e $U 142  ]
+"98
+[; ;main_master_p1.c: 98:         }
+}
+[e $U 142  ]
+[e :U 143 ]
+[e [\ _req , $ -> 0 `i 144
+ , $ -> 1 `i 145
+ , $ -> 2 `i 146
+ , $ -> 3 `i 147
+ , $ -> 4 `i 148
+ 149 ]
+[e :U 142 ]
+"100
+[; ;main_master_p1.c: 100:         PIR1bits.SSPIF = 0;
+[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
+"101
+[; ;main_master_p1.c: 101:     }
+}
+[e :U 141 ]
+"102
+[; ;main_master_p1.c: 102:     return;
+[e $UE 139  ]
+"103
+[; ;main_master_p1.c: 103: }
 [e :UE 139 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"83
-[; ;main_master_p1.c: 83: void main(void) {
+"108
+[; ;main_master_p1.c: 108: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"84
-[; ;main_master_p1.c: 84:     setup();
+"109
+[; ;main_master_p1.c: 109:     setup();
 [e ( _setup ..  ]
-"85
-[; ;main_master_p1.c: 85:     Lcd_Clear();
+"110
+[; ;main_master_p1.c: 110:     Lcd_Clear();
 [e ( _Lcd_Clear ..  ]
-"86
-[; ;main_master_p1.c: 86:     while(1){
-[e :U 143 ]
+"111
+[; ;main_master_p1.c: 111:     while(1){
+[e :U 152 ]
 {
-"87
-[; ;main_master_p1.c: 87:         sprintf(frow, "%02d:%02d    Luz: %02d", hrs,mins,lux);
+"112
+[; ;main_master_p1.c: 112:         sprintf(frow, "%02d:%02d    Luz: %02d", hrs,mins,lux);
 [e ( _sprintf (1 , , , (. , &U _frow :s 1C _hrs _mins _lux ]
-"88
-[; ;main_master_p1.c: 88:         sprintf(srow, "Mov: %d  Temp: %02d",mov,temp);
+"113
+[; ;main_master_p1.c: 113:         sprintf(srow, "Mov: %d  Temp: %02d",mov,temp);
 [e ( _sprintf (1 , , (. , &U _srow :s 2C _mov _temp ]
-"89
-[; ;main_master_p1.c: 89:         Lcd_Set_Cursor(1,1);
+"114
+[; ;main_master_p1.c: 114:         Lcd_Set_Cursor(1,1);
 [e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-"90
-[; ;main_master_p1.c: 90:         Lcd_Write_String(frow);
+"115
+[; ;main_master_p1.c: 115:         Lcd_Write_String(frow);
 [e ( _Lcd_Write_String (1 &U _frow ]
-"91
-[; ;main_master_p1.c: 91:         Lcd_Set_Cursor(2,1);
+"116
+[; ;main_master_p1.c: 116:         Lcd_Set_Cursor(2,1);
 [e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
-"92
-[; ;main_master_p1.c: 92:         Lcd_Write_String(srow);
+"117
+[; ;main_master_p1.c: 117:         Lcd_Write_String(srow);
 [e ( _Lcd_Write_String (1 &U _srow ]
-"94
-[; ;main_master_p1.c: 94:         if(lux <= 6)
-[e $ ! <= _lux -> 6 `i 145  ]
-"95
-[; ;main_master_p1.c: 95:             PORTB = 0xFF;
+"119
+[; ;main_master_p1.c: 119:         if(lux <= 6)
+[e $ ! <= _lux -> 6 `i 154  ]
+"120
+[; ;main_master_p1.c: 120:             PORTB = 0xFF;
 [e = _PORTB -> -> 255 `i `uc ]
-[e $U 146  ]
-"96
-[; ;main_master_p1.c: 96:         else
-[e :U 145 ]
-"97
-[; ;main_master_p1.c: 97:             PORTB = 0x00;
+[e $U 155  ]
+"121
+[; ;main_master_p1.c: 121:         else
+[e :U 154 ]
+"122
+[; ;main_master_p1.c: 122:             PORTB = 0x00;
 [e = _PORTB -> -> 0 `i `uc ]
-[e :U 146 ]
-"99
-[; ;main_master_p1.c: 99:     }
+[e :U 155 ]
+"124
+[; ;main_master_p1.c: 124:     }
 }
-[e :U 142 ]
-[e $U 143  ]
-[e :U 144 ]
-"100
-[; ;main_master_p1.c: 100:     return;
-[e $UE 141  ]
-"101
-[; ;main_master_p1.c: 101: }
-[e :UE 141 ]
+[e :U 151 ]
+[e $U 152  ]
+[e :U 153 ]
+"125
+[; ;main_master_p1.c: 125:     return;
+[e $UE 150  ]
+"126
+[; ;main_master_p1.c: 126: }
+[e :UE 150 ]
 }
-"106
-[; ;main_master_p1.c: 106: void read_red(void){
+"131
+[; ;main_master_p1.c: 131: void read_red(void){
 [v _read_red `(v ~T0 @X0 1 ef ]
 {
 [e :U _read_red ]
 [f ]
-"107
-[; ;main_master_p1.c: 107:     switch(val & 224){
-[e $U 149  ]
+"132
+[; ;main_master_p1.c: 132:     switch(val & 224){
+[e $U 158  ]
 {
-"108
-[; ;main_master_p1.c: 108:         case 128:
-[e :U 150 ]
-"109
-[; ;main_master_p1.c: 109:             mov = val & 31;
+"133
+[; ;main_master_p1.c: 133:         case 128:
+[e :U 159 ]
+"134
+[; ;main_master_p1.c: 134:             mov = val & 31;
 [e = _mov & -> _val `i -> 31 `i ]
-"110
-[; ;main_master_p1.c: 110:             break;
-[e $U 148  ]
-"111
-[; ;main_master_p1.c: 111:         case 160:
-[e :U 151 ]
-"112
-[; ;main_master_p1.c: 112:             temp = val & 31;
+"135
+[; ;main_master_p1.c: 135:             break;
+[e $U 157  ]
+"136
+[; ;main_master_p1.c: 136:         case 160:
+[e :U 160 ]
+"137
+[; ;main_master_p1.c: 137:             temp = val & 31;
 [e = _temp & -> _val `i -> 31 `i ]
-"113
-[; ;main_master_p1.c: 113:             break;
-[e $U 148  ]
-"114
-[; ;main_master_p1.c: 114:         case 192:
-[e :U 152 ]
-"115
-[; ;main_master_p1.c: 115:             lux = val & 31;
+"138
+[; ;main_master_p1.c: 138:             break;
+[e $U 157  ]
+"139
+[; ;main_master_p1.c: 139:         case 192:
+[e :U 161 ]
+"140
+[; ;main_master_p1.c: 140:             lux = val & 31;
 [e = _lux & -> _val `i -> 31 `i ]
-"116
-[; ;main_master_p1.c: 116:             break;
-[e $U 148  ]
-"117
-[; ;main_master_p1.c: 117:         case 224:
-[e :U 153 ]
-"118
-[; ;main_master_p1.c: 118:             hrs = val & 31;
+"141
+[; ;main_master_p1.c: 141:             break;
+[e $U 157  ]
+"142
+[; ;main_master_p1.c: 142:         case 224:
+[e :U 162 ]
+"143
+[; ;main_master_p1.c: 143:             hrs = val & 31;
 [e = _hrs & -> _val `i -> 31 `i ]
-"119
-[; ;main_master_p1.c: 119:             break;
-[e $U 148  ]
-"120
-[; ;main_master_p1.c: 120:         default:
-[e :U 154 ]
-"121
-[; ;main_master_p1.c: 121:             mins = val & 31;
+"144
+[; ;main_master_p1.c: 144:             break;
+[e $U 157  ]
+"145
+[; ;main_master_p1.c: 145:         default:
+[e :U 163 ]
+"146
+[; ;main_master_p1.c: 146:             mins = val & 31;
 [e = _mins & -> _val `i -> 31 `i ]
-"122
-[; ;main_master_p1.c: 122:             break;
-[e $U 148  ]
-"123
-[; ;main_master_p1.c: 123:     }
+"147
+[; ;main_master_p1.c: 147:             break;
+[e $U 157  ]
+"148
+[; ;main_master_p1.c: 148:     }
 }
-[e $U 148  ]
-[e :U 149 ]
-[e [\ & -> _val `i -> 224 `i , $ -> 128 `i 150
- , $ -> 160 `i 151
- , $ -> 192 `i 152
- , $ -> 224 `i 153
- 154 ]
-[e :U 148 ]
-"124
-[; ;main_master_p1.c: 124:     return;
-[e $UE 147  ]
-"125
-[; ;main_master_p1.c: 125: }
-[e :UE 147 ]
+[e $U 157  ]
+[e :U 158 ]
+[e [\ & -> _val `i -> 224 `i , $ -> 128 `i 159
+ , $ -> 160 `i 160
+ , $ -> 192 `i 161
+ , $ -> 224 `i 162
+ 163 ]
+[e :U 157 ]
+"149
+[; ;main_master_p1.c: 149:     return;
+[e $UE 156  ]
+"150
+[; ;main_master_p1.c: 150: }
+[e :UE 156 ]
 }
-"130
-[; ;main_master_p1.c: 130: void setup(void){
+"155
+[; ;main_master_p1.c: 155: void setup(void){
 [v _setup `(v ~T0 @X0 1 ef ]
 {
 [e :U _setup ]
 [f ]
-"131
-[; ;main_master_p1.c: 131:     int_osc_MHz(1);
+"156
+[; ;main_master_p1.c: 156:     int_osc_MHz(1);
 [e ( _int_osc_MHz (1 -> -> 1 `i `uc ]
-"134
-[; ;main_master_p1.c: 134:     ANSEL = 0;
+"159
+[; ;main_master_p1.c: 159:     ANSEL = 0;
 [e = _ANSEL -> -> 0 `i `uc ]
-"135
-[; ;main_master_p1.c: 135:     ANSELH = 0;
+"160
+[; ;main_master_p1.c: 160:     ANSELH = 0;
 [e = _ANSELH -> -> 0 `i `uc ]
-"137
-[; ;main_master_p1.c: 137:     TRISA = 0;
-[e = _TRISA -> -> 0 `i `uc ]
-"138
-[; ;main_master_p1.c: 138:     TRISB = 0;
+"162
+[; ;main_master_p1.c: 162:     TRISAbits.TRISA0 = 0;
+[e = . . _TRISAbits 0 0 -> -> 0 `i `uc ]
+"163
+[; ;main_master_p1.c: 163:     TRISAbits.TRISA1 = 0;
+[e = . . _TRISAbits 0 1 -> -> 0 `i `uc ]
+"164
+[; ;main_master_p1.c: 164:     TRISAbits.TRISA2 = 0;
+[e = . . _TRISAbits 0 2 -> -> 0 `i `uc ]
+"165
+[; ;main_master_p1.c: 165:     TRISAbits.TRISA3 = 0;
+[e = . . _TRISAbits 0 3 -> -> 0 `i `uc ]
+"166
+[; ;main_master_p1.c: 166:     TRISAbits.TRISA4 = 0;
+[e = . . _TRISAbits 0 4 -> -> 0 `i `uc ]
+"167
+[; ;main_master_p1.c: 167:     TRISAbits.TRISA5 = 1;
+[e = . . _TRISAbits 0 5 -> -> 1 `i `uc ]
+"168
+[; ;main_master_p1.c: 168:     PORTAbits.RA5 = 0;
+[e = . . _PORTAbits 0 5 -> -> 0 `i `uc ]
+"170
+[; ;main_master_p1.c: 170:     TRISB = 0;
 [e = _TRISB -> -> 0 `i `uc ]
-"140
-[; ;main_master_p1.c: 140:     Lcd_Init();
+"172
+[; ;main_master_p1.c: 172:     TRISEbits.TRISE0 = 0;
+[e = . . _TRISEbits 0 0 -> -> 0 `i `uc ]
+"174
+[; ;main_master_p1.c: 174:     Lcd_Init();
 [e ( _Lcd_Init ..  ]
-"141
-[; ;main_master_p1.c: 141:     USART_set(9600);
+"175
+[; ;main_master_p1.c: 175:     USART_set(9600);
 [e ( _USART_set (1 -> -> -> 9600 `i `l `ul ]
-"144
-[; ;main_master_p1.c: 144:     INTCONbits.GIE = 1;
+"178
+[; ;main_master_p1.c: 178:     spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
+[e ( _spiInit (4 , , , . `E1369 4 . `E1377 0 . `E1381 1 . `E1385 0 ]
+"181
+[; ;main_master_p1.c: 181:     INTCONbits.GIE = 1;
 [e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
-"145
-[; ;main_master_p1.c: 145:     INTCONbits.PEIE = 1;
+"182
+[; ;main_master_p1.c: 182:     INTCONbits.PEIE = 1;
 [e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
-"146
-[; ;main_master_p1.c: 146:     return;
-[e $UE 155  ]
-"147
-[; ;main_master_p1.c: 147: }
-[e :UE 155 ]
+"183
+[; ;main_master_p1.c: 183:     PIR1bits.SSPIF = 0;
+[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
+"184
+[; ;main_master_p1.c: 184:     PIE1bits.SSPIE = 1;
+[e = . . _PIE1bits 0 3 -> -> 1 `i `uc ]
+"186
+[; ;main_master_p1.c: 186:     return;
+[e $UE 164  ]
+"187
+[; ;main_master_p1.c: 187: }
+[e :UE 164 ]
 }
 [p f _sprintf 8421508 ]
 [a 1C 37 48 50 100 58 37 48 50 100 32 32 32 32 76 117 122 58 32 37 48 50 100 0 ]

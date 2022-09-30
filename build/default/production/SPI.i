@@ -1,4 +1,4 @@
-# 1 "LCD.c"
+# 1 "SPI.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,10 +6,10 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "LCD.c" 2
-# 11 "LCD.c"
-# 1 "./LCD.h" 1
-# 42 "./LCD.h"
+# 1 "SPI.c" 2
+# 10 "SPI.c"
+# 1 "./SPI.h" 1
+# 15 "./SPI.h"
 # 1 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2627,131 +2627,82 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 29 "C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC16Fxxx_DFP/1.3.42/xc8\\pic\\include\\xc.h" 2 3
-# 42 "./LCD.h" 2
+# 15 "./SPI.h" 2
 
 
-
-
-void Lcd_Port(char a);
-
-void Lcd_Cmd(char a);
-
-void Lcd_Clear(void);
-
-void Lcd_Set_Cursor(char a, char b);
-
-void Lcd_Init(void);
-
-void Lcd_Write_Char(char a);
-
-void Lcd_Write_String(char *a);
-
-void Lcd_Shift_Right(void);
-
-void Lcd_Shift_Left(void);
-# 11 "LCD.c" 2
-
-
-void Lcd_Port(char a)
+typedef enum
 {
-    if (a & 1)
-        RA2 = 1;
-    else
-        RA2 = 0;
+    SPI_MASTER_OSC_DIV4 = 0b00100000,
+    SPI_MASTER_OSC_DIV16 = 0b00100001,
+    SPI_MASTER_OSC_DIV64 = 0b00100010,
+    SPI_MASTER_TMR2 = 0b00100011,
+    SPI_SLAVE_SS_EN = 0b00100100,
+    SPI_SLAVE_SS_DIS = 0b00100101
+}Spi_Type;
 
-    if (a & 2)
-        RA3 = 1;
-    else
-        RA3 = 0;
-
-    if (a & 4)
-        RA4 = 1;
-    else
-        RA4 = 0;
-
-    if (a & 8)
-        RE0 = 1;
-    else
-        RE0 = 0;
-}
-
-void Lcd_Cmd(char a)
+typedef enum
 {
-    RA0 = 0;
-    Lcd_Port(a);
-    RA1 = 1;
-    _delay((unsigned long)((4)*(1000000/4000.0)));
-    RA1 = 0;
-}
+    SPI_DATA_SAMPLE_MIDDLE = 0b00000000,
+    SPI_DATA_SAMPLE_END = 0b10000000
+}Spi_Data_Sample;
 
-void Lcd_Clear(void) {
-    Lcd_Cmd(0);
-    Lcd_Cmd(1);
-}
-
-void Lcd_Set_Cursor(char a, char b)
+typedef enum
 {
-    char temp, z, y;
-    if (a == 1) {
-        temp = 0x80 + b - 1;
-        z = temp >> 4;
-        y = temp & 0x0F;
-        Lcd_Cmd(z);
-        Lcd_Cmd(y);
-    } else if (a == 2) {
-        temp = 0xC0 + b - 1;
-        z = temp >> 4;
-        y = temp & 0x0F;
-        Lcd_Cmd(z);
-        Lcd_Cmd(y);
+    SPI_CLOCK_IDLE_HIGH = 0b00010000,
+    SPI_CLOCK_IDLE_LOW = 0b00000000
+}Spi_Clock_Idle;
+
+typedef enum
+{
+    SPI_IDLE_2_ACTIVE = 0b00000000,
+    SPI_ACTIVE_2_IDLE = 0b01000000
+}Spi_Transmit_Edge;
+
+
+void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
+void spiWrite(char);
+unsigned spiDataReady();
+char spiRead();
+# 10 "SPI.c" 2
+
+
+void spiInit(Spi_Type sType, Spi_Data_Sample sDataSample, Spi_Clock_Idle sClockIdle, Spi_Transmit_Edge sTransmitEdge)
+{
+    TRISCbits.TRISC5 = 0;
+    if(sType & 0b00000100)
+    {
+        SSPSTAT = sTransmitEdge;
+        TRISCbits.TRISC3 = 1;
     }
+    else
+    {
+        SSPSTAT = sDataSample | sTransmitEdge;
+        TRISCbits.TRISC3 = 0;
+    }
+
+    SSPCON = sType | sClockIdle;
 }
 
-void Lcd_Init(void) {
-    Lcd_Port(0x00);
-    _delay((unsigned long)((20)*(1000000/4000.0)));
-    Lcd_Cmd(0x03);
-    _delay((unsigned long)((5)*(1000000/4000.0)));
-    Lcd_Cmd(0x03);
-    _delay((unsigned long)((11)*(1000000/4000000.0)));
-    Lcd_Cmd(0x03);
-
-    Lcd_Cmd(0x02);
-    Lcd_Cmd(0x02);
-    Lcd_Cmd(0x08);
-    Lcd_Cmd(0x00);
-    Lcd_Cmd(0x0C);
-    Lcd_Cmd(0x00);
-    Lcd_Cmd(0x06);
+static void spiReceiveWait()
+{
+    while ( !SSPSTATbits.BF );
 }
 
-void Lcd_Write_Char(char a) {
-    char temp, y;
-    temp = a & 0x0F;
-    y = a & 0xF0;
-    RA0 = 1;
-    Lcd_Port(y >> 4);
-    RA1 = 1;
-    _delay((unsigned long)((40)*(1000000/4000000.0)));
-    RA1 = 0;
-    Lcd_Port(temp);
-    RA1 = 1;
-    _delay((unsigned long)((40)*(1000000/4000000.0)));
-    RA1 = 0;
+void spiWrite(char dat)
+{
+    SSPBUF = dat;
 }
 
-void Lcd_Write_String(char *a) {
-    int i;
-    for (i = 0; a[i] != '\0'; i++)
-        Lcd_Write_Char(a[i]);
+unsigned spiDataReady()
+{
+    if(SSPSTATbits.BF)
+        return 1;
+    else
+        return 0;
 }
 
-void Lcd_Shift_Right(void) {
-    Lcd_Cmd(0x01);
-    Lcd_Cmd(0x0C);
-}
-
-void Lcd_Shift_Left(void) {
-    Lcd_Cmd(0x01);
-    Lcd_Cmd(0x08);
+char spiRead()
+{
+    spiReceiveWait();
+    return(SSPBUF);
 }

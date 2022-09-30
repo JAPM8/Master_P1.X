@@ -41,6 +41,7 @@
 #include "osc.h"
 #include "USART.h"
 #include "LCD.h"
+#include "SPI.h"
 
 /*
  * Constantes
@@ -53,13 +54,13 @@
 #define D4 RA2
 #define D5 RA3
 #define D6 RA4
-#define D7 RA5
+#define D7 RE0
 
 /*
  * Variables
  */
 char val, frow[20], srow[20];
-int mov = 0, temp = 24,hrs = 15, mins = 15, lux = 0;
+int req = 10, mov = 0, temp = 24,hrs = 15, mins = 15, lux = 0;
 /*
  * Prototipos de Función
  */
@@ -73,6 +74,30 @@ void __interrupt() master(void){
     if(PIR1bits.RCIF){ //Se verifica si hay un nuevo dato en el serial
         val = USART_read();
         read_red();
+    }
+    if (PIR1bits.SSPIF){
+        req = spiRead(); //Se lee requerimiento del Master
+        switch (req){
+            case 0: // Al recbir un 0 -> Se carga temperatura
+                spiWrite(temp);
+                break;
+            case 1: // Al recbir un 1 -> Se carga movimiento
+                spiWrite(mov);
+                break;
+            case 2: // Al recbir un 2 -> Se carga minutos
+                spiWrite(mins); 
+                break;
+            case 3: // Al recbir un 3 -> Se carga horas
+                spiWrite(hrs);
+                break;
+            case 4: // Al recbir un 4 -> Se carga lux
+                spiWrite(lux);
+                break;
+            default:
+                break;
+        }
+        
+        PIR1bits.SSPIF = 0;
     }
     return;
 }
@@ -134,14 +159,29 @@ void setup(void){
     ANSEL = 0;
     ANSELH = 0;
     
-    TRISA = 0; //PORTA -> Output
-    TRISB = 0; //PORTA -> Output
+    TRISAbits.TRISA0 = 0; //RA0 -> Output
+    TRISAbits.TRISA1 = 0; //RA1 -> Output
+    TRISAbits.TRISA2 = 0; //RA2 -> Output
+    TRISAbits.TRISA3 = 0; //RA3 -> Output
+    TRISAbits.TRISA4 = 0; //RA4 -> Output
+    TRISAbits.TRISA5 = 1; //RA5 -> Input
+    PORTAbits.RA5 = 0;
+    
+    TRISB = 0; //PORTB -> Output 
+    
+    TRISEbits.TRISE0 = 0; //RE0 -> Output
     
     Lcd_Init(); //Inicialización LCD modo 4 bits
-    USART_set(9600); 
+    USART_set(9600); //Baudaje de ~9600
+    
+    // SS activo, SMP a la mitad del tiempo, CKP en low, CKE en flanco positivo
+    spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
         
     //Interrupciones
     INTCONbits.GIE = 1; //Int. Globales
     INTCONbits.PEIE = 1; //Int. de periféricos
+    PIR1bits.SSPIF = 0;  // Clear -> SPI Int. Flag
+    PIE1bits.SSPIE = 1;  // Enable -> Int. SPI
+    
     return;
 }
